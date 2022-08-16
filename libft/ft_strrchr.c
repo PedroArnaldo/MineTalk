@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/05/28 16:05:33 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/21 19:48:24 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+char	*ft_strrchr(const char *str, int c)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
+	int	i;
 
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
+	i = ft_strlen(str);
+	while (i >= 0)
+	{
+		if (str[i] == (char) c)
+			return ((char *) &str[i]);
+		i--;
+	}
 	return (0);
 }

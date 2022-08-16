@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/05/07 14:11:21 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/21 13:40:24 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
-
-void handler()
+int	ft_isprint(int c)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
-
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
+	if (c >= 32 && c < 127)
+		return (1);
 	return (0);
 }

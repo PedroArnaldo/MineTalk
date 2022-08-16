@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/06/12 19:21:30 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/15 18:17:09 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
+	size_t	total_m;
+	void	*ptr;
 
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
-	return (0);
+	total_m = nmemb * size;
+	ptr = malloc(total_m);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, total_m);
+	return (ptr);
 }

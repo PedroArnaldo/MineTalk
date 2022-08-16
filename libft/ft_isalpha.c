@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/05/21 10:33:13 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/15 17:11:36 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
-
-void handler()
+int	ft_isalpha(int c)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
-
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
-	return (0);
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }

@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/05/07 14:24:14 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/18 21:03:14 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+size_t	ft_strlen(const char *c)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
+	size_t	count;
 
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
-	return (0);
+	count = 0;
+	while (c[count])
+			count++;
+	return (count);
 }

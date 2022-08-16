@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/06/09 18:58:44 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/23 17:09:01 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
+	size_t	index;
 
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
-	return (0);
+	index = 0;
+	if (dstsize > 0)
+	{
+		while ((index < (dstsize - 1)) && src[index] != '\0')
+		{
+			dst[index] = src[index];
+			index++;
+		}
+		dst[index] = '\0';
+	}
+	if (dstsize == 0)
+			dst[ft_strlen(dst)] = '\0';
+	while (src[index])
+			index++;
+	return (index);
 }

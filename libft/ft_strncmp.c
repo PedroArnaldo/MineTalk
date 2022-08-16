@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/06/06 20:04:34 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/20 10:39:28 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
+	size_t	index;
 
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
+	index = 0;
+	while ((str1[index] || str2[index]) && index < n)
+	{
+		if (str1[index] != str2[index])
+			return ((unsigned char)str1[index] - (unsigned char)str2[index]);
+		index++;
+	}
+	if ((index < n) && str1[index] != str2[index])
+		return ((unsigned char) str1[index] - (unsigned char) str2[index]);
 	return (0);
 }

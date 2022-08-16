@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/06/13 19:04:18 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/22 18:31:05 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+void	ft_putnbr_fd(int n, int fd)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
+	char	c;
 
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
-	return (0);
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else
+	{
+		if (n < 0)
+		{
+			write(fd, "-", 1);
+			n = n * -1;
+		}
+		if (n < 10)
+		{
+			c = n + '0';
+			write(fd, &c, 1);
+		}
+		else
+		{
+			ft_putnbr_fd(n / 10, fd);
+			c = (n % 10) + '0';
+			write(fd, &c, 1);
+		}
+	}
 }

@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/05/07 14:28:08 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/20 10:32:15 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+void	*ft_memset(void *dest, int c, size_t n)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
+	size_t			count;
+	unsigned char	*ptr;
 
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
-	return (0);
+	ptr = (unsigned char *) dest;
+	count = 0;
+	while (count < n)
+	{
+		ptr[count] = c;
+		count++;
+	}
+	return (dest);
 }

@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_printfutils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/07/04 14:13:11 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/08/16 10:34:19 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+int	ft_putchar(char c)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
+	write(1, &c, 1);
+	return (1);
 }
 
-#include <stdio.h>
-int main()
+int	ft_putstr(char *str)
 {
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
-	return (0);
+	int	i;
+
+	if (str == NULL)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	i = 0;
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+	return (ft_strlen(str));
 }
+

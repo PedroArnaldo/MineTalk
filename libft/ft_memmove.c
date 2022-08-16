@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/06/07 20:34:18 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/20 10:34:00 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
+	char	*aux_dst;
+	char	*aux_src;
 
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
-	return (0);
+	aux_dst = (char *) dst;
+	aux_src = (char *) src;
+	if (aux_src < aux_dst)
+	{
+		while (len--)
+		{
+			aux_dst[len] = aux_src[len];
+		}
+		return (aux_dst);
+	}
+	ft_memcpy(aux_dst, aux_src, len);
+	return (aux_dst);
 }

@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/05/28 14:37:00 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/21 13:42:41 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+char	*ft_strchr(const char *str, int c)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
+	char	*dst_str;
 
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
-	return (0);
+	dst_str = (char *) str;
+	while (*dst_str)
+	{
+		if (*dst_str == (char)c)
+			return ((char *) dst_str);
+		dst_str++;
+	}
+	if (*dst_str == (char)c)
+		return ((char *) dst_str);
+	return (NULL);
 }

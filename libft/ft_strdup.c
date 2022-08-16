@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/06/13 11:06:26 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/21 18:17:48 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+char	*ft_strdup(const char *s1)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
+	size_t	size;
+	char	*str;
+	size_t	index;
 
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
-	return (0);
+	size = ft_strlen((char *)s1) + 1;
+	str = (char *) malloc(size);
+	if (str == NULL)
+		return (NULL);
+	index = 0;
+	while (s1[index])
+	{
+		str[index] = s1[index];
+		index++;
+	}
+	str[index] = '\0';
+	return (str);
 }

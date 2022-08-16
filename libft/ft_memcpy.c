@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/06/07 18:56:03 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/20 10:33:17 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
+	size_t	index;
+	char	*aux_dst;
+	char	*aux_src;
 
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
-	return (0);
+	if (src == NULL && dst == NULL)
+		return (dst);
+	aux_dst = (char *) dst;
+	aux_src = (char *) src;
+	index = 0;
+	while (index < n)
+	{
+		aux_dst[index] = aux_src[index];
+		index++;
+	}
+	return (aux_dst);
 }

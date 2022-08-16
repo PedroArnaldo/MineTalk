@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/16 13:35:49 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/06/09 17:56:06 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/20 10:40:36 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void handler()
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
-}
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			index;
 
-#include <stdio.h>
-int main()
-{
-	signal(SIGINT, handler);
-	ft_printf("PID: %d\n", getpid());
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *) s2;
+	index = 0;
+	while (index < n)
+	{
+		if (str1[index] != str2[index])
+			return ((int)(str1[index] - str2[index]));
+		index++;
+	}
 	return (0);
 }

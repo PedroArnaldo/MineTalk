@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 10:45:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/17 10:53:55 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/05/21 11:22:24 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/20 10:32:45 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include "./libft/libft.h"
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*clean;
+	size_t			index;
 
-#endif
+	clean = (unsigned char *)s;
+	index = 0;
+	while (index < n)
+	{
+		clean[index] = 0;
+		index++;
+	}
+}

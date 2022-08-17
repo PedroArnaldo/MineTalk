@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 10:45:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/17 10:53:55 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/06/07 18:56:03 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/06/20 10:33:17 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include "./libft/libft.h"
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t	index;
+	char	*aux_dst;
+	char	*aux_src;
 
-#endif
+	if (src == NULL && dst == NULL)
+		return (dst);
+	aux_dst = (char *) dst;
+	aux_src = (char *) src;
+	index = 0;
+	while (index < n)
+	{
+		aux_dst[index] = aux_src[index];
+		index++;
+	}
+	return (aux_dst);
+}

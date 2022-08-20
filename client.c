@@ -1,6 +1,6 @@
 #include "minitalk.h"
 
-void char_to_bits(unsigned char c)
+void char_to_bits(unsigned char c, pid_t pid)
 {
 	int count;
 
@@ -8,23 +8,32 @@ void char_to_bits(unsigned char c)
 		while(count-- > 0)
 	{
 		if(!(c & 128))
-			write(1, "0",1);
+			kill(pid, SIGUSR2);
 		else
-			write(1, "1", 1);
+			kill(pid, SIGUSR1);
 		c = c << 1;
 	}
 }
 
 #include <stdio.h>
 int main(int argc, char *argv[])
-{
-	int c;
+{ 
+	int i;
+	pid_t pid;
 
-	c = 1;
-	while(c < argc)
+	pid = ft_atoi(argv[1]);
+	i = 0;
+	if(argc != 3)
+		ft_printf("Error %s", argv[2]);
+	else
 	{
-		char_to_bits((unsigned char)argv[c]);
-		printf("\n");
-		c++;
+		while(argv[2][i])
+		{
+			char_to_bits(argv[2][i], pid);
+			i++;
+			ft_printf("\n");
+		}
+
 	}
+	ft_printf("\n");
 }

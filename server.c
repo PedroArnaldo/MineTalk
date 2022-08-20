@@ -6,7 +6,7 @@
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/17 15:10:16 by parnaldo         ###   ########.fr       */
+/*   Updated: 2022/08/20 05:32:38 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,39 @@
 int bits_to_char(int bits)
 {
 	int dec;
-	int rem;
+	int re;
 	int base;
 
 	base = 1;
-	rem = 1;
+	re = 1;
 	dec = 0;
 	while(bits > 0)
 	{
-		rem = bits % 10;
-		dec = dec + rem * base;
+		re = bits % 10;
+		dec = dec + re * base;
 		bits = bits / 10;
 		base = base * 2;
 	}
 	return (dec);
 }
 
-void handler()
+void handler(int c)
 {
-	write(STDOUT_FILENO, "Closed Process!\n", 16);
+	ft_printf("SIGUSR%d\n", c);
 }
 
 #include <stdio.h>
 int main()
 {
-	signal(SIGINT, handler);
+	struct sigaction sg;
+	sg.sa_handler = handler;
+	sigaction(SIGUSR2, &sg, NULL);
+	sigaction(SIGUSR1, &sg, NULL);
 	ft_printf("PID: %d\n", getpid());
 
-	ft_printf("%c\n", bits_to_char(1100001));
+	while(1)
+	{
+		sleep(1);
+	}
 	return (0);
 }

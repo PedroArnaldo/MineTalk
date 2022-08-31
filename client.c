@@ -5,14 +5,16 @@ void char_to_bits(unsigned char c, pid_t pid)
 	int count;
 
 	count = 8;
-		while(count-- > 0)
+	while(count-- > 0)
 	{
 		if(!(c & 128))
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
 		c = c << 1;
+		usleep(250);
 	}
+
 }
 
 #include <stdio.h>

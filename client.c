@@ -17,12 +17,20 @@ void char_to_bits(unsigned char c, pid_t pid)
 
 }
 
-#include <stdio.h>
+void handler(int sig)
+{
+	if(sig == SIGUSR2)
+	{
+		ft_printf("end.");
+	}
+}
+
 int main(int argc, char *argv[])
 { 
 	int i;
 	pid_t pid;
 
+	signal(SIGUSR2, handler);
 	pid = ft_atoi(argv[1]);
 	i = 0;
 	if(argc != 3)
@@ -33,9 +41,7 @@ int main(int argc, char *argv[])
 		{
 			char_to_bits(argv[2][i], pid);
 			i++;
-			ft_printf("\n");
 		}
-
+		char_to_bits(3, pid);
 	}
-	ft_printf("\n");
 }

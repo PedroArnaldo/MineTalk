@@ -6,32 +6,12 @@
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:46:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/31 11:59:39 by parnaldo         ###   ########.fr       */
+/*   Updated: 2022/09/01 15:47:15 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-/*
-int bits_to_char(int bits)
-{
-	int dec;
-	int re;
-	int base;
-
-	base = 1;
-	re = 1;
-	dec = 0;
-	while(bits > 0)
-	{
-		re = bits % 10;
-		dec = dec + re * base;
-		bits = bits / 10;
-		base = base * 2;
-	}
-	return (dec);
-}
-*/
 void handler(int sig, siginfo_t *info, void *ucontext)
 {
 	(void)ucontext;
@@ -46,12 +26,13 @@ void handler(int sig, siginfo_t *info, void *ucontext)
 	if (i == 8)
 	{
 		ft_printf("%c", c);
+		if (c == 3)
+			kill(info->si_pid, SIGUSR2);
 		c = 0;
 		i = 0;
 	}
 }
 
-#include <stdio.h>
 int main()
 {
 	struct sigaction sg;

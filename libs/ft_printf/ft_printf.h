@@ -6,7 +6,7 @@
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 19:29:11 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/07/08 22:19:10 by parnaldo         ###   ########.fr       */
+/*   Updated: 2022/09/05 11:39:02 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_putchar(char c);
 int		ft_putstr(char *str);
 size_t	ft_printfdec(int n);
 int		ft_printf(const char *str, ...);
-int		ft_strlen(char *s1);
+int		ft_strlen_printf(char *s1);
 char	*ft_strdup(const char *s1);
 int		ft_print_unsigned(unsigned int n);
 int		ft_printfhex(unsigned long n, char *base);

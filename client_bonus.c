@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 11:23:15 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/09/05 13:39:04 by parnaldo         ###   ########.fr       */
+/*   Created: 2022/09/05 13:26:43 by parnaldo          #+#    #+#             */
+/*   Updated: 2022/09/05 13:26:45 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	char_to_bits(unsigned char c, pid_t pid)
 {
@@ -32,7 +32,7 @@ void	handler(int sig)
 {
 	if (sig == SIGUSR2)
 	{
-		ft_printf("Successfully received");
+		ft_printf("end.");
 	}
 }
 
@@ -45,7 +45,7 @@ int	main(int argc, char *argv[])
 	pid = ft_atoi(argv[1]);
 	i = 0;
 	if (argc != 3)
-		ft_printf("Error: less than three arguments");
+		ft_printf("Error %s", argv[2]);
 	else
 	{
 		while (argv[2][i])

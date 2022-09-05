@@ -6,7 +6,7 @@
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 10:45:57 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/08/17 10:53:55 by parnaldo         ###   ########.fr       */
+/*   Updated: 2022/09/05 11:38:17 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <signal.h>
-# include "./libft/libft.h"
+# include "./libs/libft/libft.h"
+# include "./libs/ft_printf/ft_printf.h"
 
 #endif

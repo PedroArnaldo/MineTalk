@@ -6,7 +6,7 @@
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:13:11 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/07/08 22:08:02 by parnaldo         ###   ########.fr       */
+/*   Updated: 2022/09/05 13:15:25 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int	ft_putstr(char *str)
 		ft_putchar(str[i]);
 		i++;
 	}
-	return (ft_strlen(str));
+	return (ft_strlen_printf(str));
 }
 
-int	ft_strlen(char *s1)
+int	ft_strlen_printf(char *s1)
 {
 	int	len;
 

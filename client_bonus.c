@@ -6,7 +6,7 @@
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:26:43 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/09/05 13:26:45 by parnaldo         ###   ########.fr       */
+/*   Updated: 2022/09/05 15:17:25 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	handler(int sig)
 {
 	if (sig == SIGUSR2)
 	{
-		ft_printf("end.");
+		ft_printf("Successfuly Received");
 	}
 }
 

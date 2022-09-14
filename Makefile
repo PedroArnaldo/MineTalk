@@ -6,7 +6,7 @@
 #    By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 10:38:02 by parnaldo          #+#    #+#              #
-#    Updated: 2022/09/05 13:24:55 by parnaldo         ###   ########.fr        #
+#    Updated: 2022/09/05 14:19:25 by parnaldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRC_S = server.c
 SRC_C_BONUS = client_bonus.c
 SRC_S_BONUS = server_bonus.c
 
-INC		= -I. -I$(LIBFT_DIR)
+INC_LIBFT	= -I. -I$(LIBFT_DIR)
+INC_PRINTF	= -I. -I$(PRINTF_DIR)
 
 all:	$(CLIENT) $(SERVER)
 
@@ -42,17 +43,17 @@ $(NAME): all
 
 bonus: $(CLIENT_BONUS) $(SERVER_BONUS)
 
-$(CLIENT): $(LIBFT)
-	@$(CC) $(CFLAGS) $(SRC_C) $(LIBFT) $(PRINTF) $(INC) -o $(CLIENT)
+$(CLIENT): $(LIBFT) $(PRINTF)
+	@$(CC) $(CFLAGS) $(SRC_C) $(LIBFT) $(INC_LIBFT) $(PRINTF) $(INC_PRINTF) -o $(CLIENT)
 
-$(SERVER): $(LIBFT)
-	@$(CC) $(CFLAGS) $(SRC_S) $(LIBFT) $(PRINTF) $(INC) -o $(SERVER)
+$(SERVER): $(LIBFT) $(PRINTF)
+	@$(CC) $(CFLAGS) $(SRC_S) $(LIBFT) $(INC_LIBFT) $(PRINTF) $(INC_PRINTF) -o $(SERVER)
 
-$(CLIENT_BONUS): $(LIBFT)
-	@$(CC) $(CFLAGS) $(SRC_C_BONUS) $(LIBFT) $(PRINTF) $(INC) -o $(CLIENT_BONUS)
+$(CLIENT_BONUS): $(LIBFT) $(PRINTF)
+	@$(CC) $(CFLAGS) $(SRC_C_BONUS) $(LIBFT) $(INC_LIBFT) $(PRINTF) $(INC_PRINTF) -o $(CLIENT_BONUS)
 
-$(SERVER_BONUS): $(LIBFT)
-	@$(CC) $(CFLAGS) $(SRC_S_BONUS) $(LIBFT) $(PRINTF) $(INC) -o $(SERVER_BONUS)
+$(SERVER_BONUS): $(LIBFT) $(PRINTF)
+	@$(CC) $(CFLAGS) $(SRC_S_BONUS) $(LIBFT) $(INC_LIBFT) $(PRINTF) $(INC_PRINTF) -o $(SERVER_BONUS)
 
 
 $(LIBFT):
@@ -63,6 +64,7 @@ $(PRINTF):
 
 clean:
 		@$(MAKE) fclean -C $(LIBFT_DIR)
+		@$(MAKE) fclean -C $(PRINTF_DIR)
 		@$(RM) $(CLIENT) $(SERVER) $(CLIENT_BONUS) $(SERVER_BONUS)
 
 fclean: clean

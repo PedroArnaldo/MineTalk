@@ -6,7 +6,7 @@
 /*   By: parnaldo <parnaldo@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:23:15 by parnaldo          #+#    #+#             */
-/*   Updated: 2022/09/05 13:39:04 by parnaldo         ###   ########.fr       */
+/*   Updated: 2022/09/14 10:57:37 by parnaldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,24 @@ void	handler(int sig)
 int	main(int argc, char *argv[])
 {
 	int		i;
+	int		count;
 	pid_t	pid;
 
 	signal(SIGUSR2, handler);
-	pid = ft_atoi(argv[1]);
 	i = 0;
-	if (argc != 3)
-		ft_printf("Error: less than three arguments");
-	else
+	count = 0;
+	if(argc == 3)
 	{
+		while(argv[1][count])
+		{
+			if(!ft_isdigit(argv[1][count]))
+			{
+				ft_printf("Erro pid.");
+				exit(EXIT_FAILURE);
+			}
+			count++;
+		}
+		pid = ft_atoi(argv[1]);
 		while (argv[2][i])
 		{
 			char_to_bits(argv[2][i], pid);
@@ -55,4 +64,6 @@ int	main(int argc, char *argv[])
 		}
 		char_to_bits(3, pid);
 	}
+	else
+		ft_printf("Error: less than three arguments");
 }
